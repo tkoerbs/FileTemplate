@@ -42,9 +42,9 @@ public class FileTemplate
     // We use the reluctant quantifier *? to match shortest possible sequences, e.g. in a line "{{@PH1@}}{{@PH2@}}" match PH1 and PH2 instead of PH1@}}{{@PH2
     // To handle nested placeholder boundaries, e.g. in a line "{{@abc{{@PH1@}}xyz@}}" match PH1 we need to "manually" exclude {{@ from the regex for the PLACEHOLDERNAME
     //
-    public static Pattern compiledPlaceholderPatternRegex             = Pattern.compile("\\{\\{@" + "((([^\\{])|(\\{[^\\{])|(\\{\\{[^@]))*?)(\\s*#\\s*base\\s*(\\d+))?" + "@\\}\\}"); // {{@PLACEHOLDERNAME@}}, using reluctant quantifier "*?" (instead of greedy quantifier "*") to match shortest possible sequence
-    public static Pattern compiledPlaceholderSectionBeginPatternRegex = Pattern.compile("\\{\\{@" + "((([^\\{])|(\\{[^\\{])|(\\{\\{[^@]))*?)\\s*#\\s*BEGIN\\s*" + "@\\}\\}"); // {{@PLACEHOLDERNAME@}}, using reluctant quantifier "*?" (instead of greedy quantifier "*") to match shortest possible sequence
-    public static Pattern compiledPlaceholderSectionEndPatternRegex   = Pattern.compile("\\{\\{@" + "((([^\\{])|(\\{[^\\{])|(\\{\\{[^@]))*?)\\s*#\\s*END\\s*" + "@\\}\\}"); // {{@PLACEHOLDERNAME@}}, using reluctant quantifier "*?" (instead of greedy quantifier "*") to match shortest possible sequence
+    public static Pattern compiledPlaceholderPatternRegex             = Pattern.compile("\\{\\{@" + "((([^\\{])|(\\{[^\\{])|(\\{\\{[^@]))*?)(\\s*#\\s*base\\s*(\\d+))?" + "@\\}\\}"); // {{@PLACEHOLDERNAME#base X@}}, using reluctant quantifier "*?" (instead of greedy quantifier "*") to match shortest possible sequence
+    public static Pattern compiledPlaceholderSectionBeginPatternRegex = Pattern.compile("\\{\\{@" + "((([^\\{])|(\\{[^\\{])|(\\{\\{[^@]))*?)\\s*#\\s*BEGIN\\s*" + "@\\}\\}"); // {{@PLACEHOLDERNAME#BEGIN@}}, using reluctant quantifier "*?" (instead of greedy quantifier "*") to match shortest possible sequence
+    public static Pattern compiledPlaceholderSectionEndPatternRegex   = Pattern.compile("\\{\\{@" + "((([^\\{])|(\\{[^\\{])|(\\{\\{[^@]))*?)\\s*#\\s*END\\s*" + "@\\}\\}"); // {{@PLACEHOLDERNAME#END@}}, using reluctant quantifier "*?" (instead of greedy quantifier "*") to match shortest possible sequence
 
     public static void printUsage()
     {
